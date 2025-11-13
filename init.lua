@@ -269,6 +269,7 @@ require("lazy").setup({
 							},
 						},
 					},
+					basedpyright = {},
 				}
 
 				-- Ensure the servers and tools above are installed
@@ -320,6 +321,7 @@ require("lazy").setup({
 						"lua_ls",
 						"rust_analyzer",
 						"ols",
+						"basedpyright",
 					},
 				})
 			end,
@@ -426,6 +428,7 @@ require("lazy").setup({
 						"javascript",
 						"html",
 						"bash",
+						"python",
 					},
 					sync_install = false,
 					highlight = { enable = true },
@@ -527,6 +530,7 @@ require("lazy").setup({
 			-- If you use nix, you can build from source using latest nightly rust with:
 			-- build = 'nix run .#build-plugin',
 
+			build = "cargo build --release",
 			---@module 'blink.cmp'
 			---@type blink.cmp.Config
 			opts = {
