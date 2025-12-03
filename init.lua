@@ -450,7 +450,7 @@ require("lazy").setup({
 				-- 		solid = false, -- use solid styling for floating windows, see |winborder|
 				-- 	},
 				-- })
-				vim.cmd.colorscheme("catppuccin-macchiato")
+				vim.cmd.colorscheme("catppuccin-frappe")
 			end,
 		},
 
