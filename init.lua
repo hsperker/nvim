@@ -764,6 +764,39 @@ require("lazy").setup({
 		{
 			"RRethy/vim-illuminate",
 		},
+
+		-- nvim session management
+		{
+			"folke/persistence.nvim",
+			event = "BufReadPre",
+			opts = {
+				dir = vim.fn.expand(vim.fn.stdpath("state") .. "/sessions/"),
+				options = { "buffers", "curdir", "tabpages", "winsize" },
+			},
+			keys = {
+				{
+					"<leader>qs",
+					function()
+						require("persistence").load()
+					end,
+					desc = "Restore Session for CWD",
+				},
+				{
+					"<leader>ql",
+					function()
+						require("persistence").load({ last = true })
+					end,
+					desc = "Restore Last Session",
+				},
+				{
+					"<leader>qd",
+					function()
+						require("persistence").stop()
+					end,
+					desc = "Don't Save Current Session",
+				},
+			},
+		},
 	},
 
 	-- Configure any other settings here. See the documentation for more details.
@@ -776,6 +809,13 @@ vim.opt.ignorecase = true -- search case insensitive
 vim.opt.smartcase = true -- search matters if capital letter
 vim.opt.inccommand = "split" -- "for incsearch while sub
 vim.diagnostic.enable = "true"
+
+-- ============================================================================
+-- Keymaps
+-- ============================================================================
+
+-- Paste over selection without yanking
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
 -- spaces
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
